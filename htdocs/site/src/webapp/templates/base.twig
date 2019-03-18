@@ -10,6 +10,7 @@
         <script>
         </script>
     </head>
+
     <body>
         <div id="container">
             <div id="navbar">
@@ -25,28 +26,22 @@
                     <a href="/register">Create user</a> <br />
                     <a href="/login">Login</a> <br>
                 {% endif %}
-
-
-
             </div>
+
             <div id="content">
                 <div id="flashinfo">{{ flash.info|raw }}</div>
 
-
                 {% block content %}
-                <h1>Main page!<h2>
-                {% if isLoggedIn %}
-                <h2> Private face </h2>
-                {% else %}
-                <h2> Public face </h2>
-                {% endif %}
-                
-                
+                    <h1>Main page!<h2>
+                    {% if isLoggedIn %}
+                        <h2> Private face </h2>
+                    {% else %}
+                        <h2> Public face </h2>
+                    {% endif %}
                 {% endblock %}
-
-
             </div>
-        </div>
+
+        </div> <!-- End: div container -->
 
         <div id="footer">
             {% block footer %}here be footer{% endblock %}

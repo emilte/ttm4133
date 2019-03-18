@@ -10,7 +10,7 @@
 
 <form action="/admin/deleteMultiple" method="POST">
 <table border=1>
-<tr> 
+<tr>
     <th></th>
     <th>ID</th>
     <th>Username</th>
@@ -18,7 +18,7 @@
     <th>Email</th>
     <th>Bio</th>
     <th>Administrator?</th>
-    <th>Edit</th>   
+    <th>Edit</th>
 </tr>
 
 {% for user in users %}
@@ -30,8 +30,8 @@
       <td> {{user.email}} </td>
       <td> {{user.bio}} </td>
       <td> {% if user.isAdmin %} Y {% else %} N {% endif %}  </td>
-      <td> 
-          <a href="/admin/edit/{{user.id}}">Edit</a>/ 
+      <td>
+          <a href="/admin/edit/{{user.id}}">Edit</a>/
           <a href="/admin/delete/{{user.id}}">Delete</a>
       </td>
   </tr>
@@ -44,4 +44,3 @@
 <br>
 <a href="/admin/create"> Add a user </a>
 {% endblock %}
-
