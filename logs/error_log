@@ -1,0 +1,31 @@
+[Fri Mar 08 10:23:29.596542 2019] [ssl:warn] [pid 26044:tid 140260357482304] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Mar 08 10:23:29.600902 2019] [mpm_event:notice] [pid 26044:tid 140260357482304] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Fri Mar 08 10:23:29.600933 2019] [core:notice] [pid 26044:tid 140260357482304] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Fri Mar 08 10:58:12.585219 2019] [mpm_event:notice] [pid 26044:tid 140260357482304] AH00494: SIGHUP received.  Attempting to restart
+[Fri Mar 08 10:58:12.594205 2019] [ssl:warn] [pid 26044:tid 140260357482304] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Mar 08 10:58:12.597772 2019] [mpm_event:notice] [pid 26044:tid 140260357482304] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Fri Mar 08 10:58:12.597798 2019] [core:notice] [pid 26044:tid 140260357482304] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Fri Mar 08 12:38:53.115053 2019] [mpm_event:notice] [pid 26044:tid 140260357482304] AH00494: SIGHUP received.  Attempting to restart
+[Fri Mar 08 12:38:53.124109 2019] [ssl:warn] [pid 26044:tid 140260357482304] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Mar 08 12:38:53.127689 2019] [mpm_event:notice] [pid 26044:tid 140260357482304] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Fri Mar 08 12:38:53.127716 2019] [core:notice] [pid 26044:tid 140260357482304] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Mon Mar 18 11:11:10.976404 2019] [ssl:warn] [pid 19221:tid 139952389576512] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Mar 18 11:11:11.011766 2019] [core:warn] [pid 19221:tid 139952389576512] AH00098: pid file /home/grp43/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Mar 18 11:11:11.013210 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Mon Mar 18 11:11:11.013234 2019] [core:notice] [pid 19221:tid 139952389576512] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Mon Mar 18 11:33:36.035796 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00494: SIGHUP received.  Attempting to restart
+[Mon Mar 18 11:33:36.044720 2019] [ssl:warn] [pid 19221:tid 139952389576512] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Mar 18 11:33:36.047998 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Mon Mar 18 11:33:36.048020 2019] [core:notice] [pid 19221:tid 139952389576512] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Mon Mar 18 11:34:38.604024 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00494: SIGHUP received.  Attempting to restart
+[Mon Mar 18 11:34:38.613052 2019] [ssl:warn] [pid 19221:tid 139952389576512] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Mar 18 11:34:38.616669 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Mon Mar 18 11:34:38.616694 2019] [core:notice] [pid 19221:tid 139952389576512] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Mon Mar 18 11:41:34.233744 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00494: SIGHUP received.  Attempting to restart
+[Mon Mar 18 11:41:34.242667 2019] [ssl:warn] [pid 19221:tid 139952389576512] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Mar 18 11:41:34.246448 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Mon Mar 18 11:41:34.246471 2019] [core:notice] [pid 19221:tid 139952389576512] AH00094: Command line: '/home/grp43/apache/bin/httpd'
+[Mon Mar 18 14:58:11.169782 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00494: SIGHUP received.  Attempting to restart
+[Mon Mar 18 14:58:11.178696 2019] [ssl:warn] [pid 19221:tid 139952389576512] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Mon Mar 18 14:58:11.181984 2019] [mpm_event:notice] [pid 19221:tid 139952389576512] AH00489: Apache/2.4.38 (Unix) OpenSSL/1.1.0g PHP/5.6.40 configured -- resuming normal operations
+[Mon Mar 18 14:58:11.182008 2019] [core:notice] [pid 19221:tid 139952389576512] AH00094: Command line: '/home/grp43/apache/bin/httpd'

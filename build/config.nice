@@ -1,0 +1,11 @@
+#! /bin/sh
+#
+# Created by configure
+
+"./configure" \
+"--prefix=/home/grp43/apache" \
+"--enable-ssl" \
+"--enable-so" \
+"--with-included-apr" \
+"--with-crypto" \
+"$@"
