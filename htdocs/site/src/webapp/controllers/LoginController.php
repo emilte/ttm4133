@@ -18,7 +18,7 @@ class LoginController extends Controller
             $this->app->flash('info', 'You are already logged in as ' . $username);
             $this->app->redirect('/');
         } else {
-            $this->render('login.twig', ['title'=>"Login"]);
+            $this->render('login.twig', ['title'=>"Login", 'last_username'=>$_COOKIE["LAST_USERNAME"]]);
         }
     }
 

@@ -7,8 +7,8 @@
     {{ flash.error|raw }} <br />
 
     <form action="" method="POST">
-        <label>Username: </label>
-        <input type="text" name="username"> <br />
+        <label>Username:</label>
+        <input type="text" name="username" value="{{ last_username }}"> <br />
         <label>Password: </label>
         <input type="password" name="password"> <br />
         <input type="submit" name="submit" value="Log in">
