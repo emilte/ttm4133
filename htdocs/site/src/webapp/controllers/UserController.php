@@ -12,7 +12,7 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    function index()     
+    function index()
     {
         if (Auth::guest()) {
             $this->render('newUserForm.twig', []);
@@ -23,7 +23,7 @@ class UserController extends Controller
         }
     }
 
-    function create()		  
+    function create()
     {
         $request = $this->app->request;
         $username = $request->post('username');
@@ -37,7 +37,9 @@ class UserController extends Controller
         if($request->post('email'))
         {
           $email = $request->post('email');
-          $user->setEmail($email);
+          if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              $user->setEmail($email);
+          }
         }
         if($request->post('bio'))
         {
@@ -45,7 +47,7 @@ class UserController extends Controller
           $user->setBio($bio);
         }
 
-        
+
         $user->save();
         $this->app->flash('info', 'Thanks for creating a user. You may now log in.');
         $this->app->redirect('/login');
@@ -70,7 +72,7 @@ class UserController extends Controller
     {
       if(Auth::isAdmin()){
           $request = $this->app->request;
-          $userlist = $request->post('userlist'); 
+          $userlist = $request->post('userlist');
           $deleted = [];
 
           if($userlist == NULL){
@@ -95,7 +97,7 @@ class UserController extends Controller
     }
 
 
-    function show($tuserid)   
+    function show($tuserid)
     {
         if(Auth::userAccess($tuserid))
         {
@@ -111,7 +113,7 @@ class UserController extends Controller
     }
 
     function newuser()
-    { 
+    {
 
         $user = User::makeEmpty();
 
@@ -126,7 +128,7 @@ class UserController extends Controller
             $bio = $request->post('bio');
 
             $isAdmin = ($request->post('isAdmin') != null);
-            
+
 
             $user->setUsername($username);
             $user->setPassword($password);
@@ -147,8 +149,8 @@ class UserController extends Controller
         }
     }
 
-    function edit($tuserid)    
-    { 
+    function edit($tuserid)
+    {
 
         $user = User::findById($tuserid);
 
@@ -165,7 +167,7 @@ class UserController extends Controller
             $bio = $request->post('bio');
 
             $isAdmin = ($request->post('isAdmin') != null);
-            
+
 
             $user->setUsername($username);
             $user->setPassword($password);
