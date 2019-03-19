@@ -118,10 +118,7 @@ class User
 
     function setEmail($email)
     {
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->email = $email;
-        }
+        $this->email = $email;
     }
 
     function setBio($bio)

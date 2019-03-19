@@ -36,6 +36,7 @@ class UserController extends Controller
 
         if($request->post('email'))
         {
+          $email = $request->post('email')
           $user->setEmail($email);
         }
         if($request->post('bio'))
