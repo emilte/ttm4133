@@ -36,10 +36,7 @@ class UserController extends Controller
 
         if($request->post('email'))
         {
-          $email = filter_var($request->post('email'), FILTER_SANITIZE_EMAIL);
-          if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              $user->setEmail($email);
-          }
+          $user->setEmail($email);
         }
         if($request->post('bio'))
         {

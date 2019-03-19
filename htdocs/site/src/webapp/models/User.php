@@ -118,7 +118,10 @@ class User
 
     function setEmail($email)
     {
-        $this->email = $email;
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL)
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->email = $email;
+        }
     }
 
     function setBio($bio)
@@ -169,7 +172,7 @@ class User
         return User::makeFromSql($row);
     }
 
-    
+
     static function all()
     {
         $query = "SELECT * FROM users";
@@ -201,4 +204,3 @@ class User
 
 
   User::$app = \Slim\Slim::getInstance();
-
