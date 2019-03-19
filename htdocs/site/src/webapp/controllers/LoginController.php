@@ -31,6 +31,9 @@ class LoginController extends Controller
         if ( Auth::checkCredentials($username, $password) ) {
             $user = User::findByUser($username);
             $_SESSION['userid'] = $user->getId();
+            $cookie_name = "LAST_USERNAME";
+            $cookie_value = $username;
+            setcookie($cookie_name, $cookie_value, time() + (1000*60*2), "/"); // sec * #sec * #min
             $this->app->flash('info', "You are now successfully logged in as " . $user->getUsername() . ".");
             $this->app->redirect('/');
         } else {
@@ -40,11 +43,11 @@ class LoginController extends Controller
     }
 
     function logout()
-    {   
+    {
         Auth::logout();
         $this->app->flashNow('info', 'Logged out successfully!!');
         $this->render('base.twig', []);
         return;
-       
+
     }
 }
