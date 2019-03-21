@@ -25,8 +25,9 @@ class HomeController extends Controller
     function pull()
     {
 
-        echo shell_exec( 'cd /home/grp43/apache/ && /usr/bin/git reset –hard HEAD && git pull' );
+        $e = shell_exec( 'cd /home/grp43/apache/ && /usr/bin/git reset –hard HEAD && git pull' );
         shell_exec( 'touch /home/grp43/hei.txt');
+        shell_exec( 'echo "{$e}" > /home/grp43/hei.txt');
         //echo 'YES';
         $this->app->flash('info', "git pull succeeded!");
         $this->render('base.twig',[]);
