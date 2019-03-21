@@ -28,20 +28,30 @@ class UserController extends Controller
         $request = $this->app->request;
         $username = $request->post('username');
         $password = $request->post('password');
+        $password2 = $request->post('password2');
 
+        if ($password != $password2) {
+            $this->app->flash('info', 'Passwords do not match. Please try again');
+            // $this->app->redirect('/login');
+            return;
+        }
 
         $user = User::makeEmpty();
         $user->setUsername($username);
         $user->setPassword($password);
 
-        if($request->post('email'))
-        {
+        if($request->post('email')) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $this->app->flash('info', 'Email has incorrect structure');
+                return;
+            }
           $email = $request->post('email');
           $user->setEmail($email);
         }
+
         if($request->post('bio'))
         {
-          $bio = $request->post('bio');
+          $bio = htmlspecialchars( $request->post('bio') );
           $user->setBio($bio);
         }
 

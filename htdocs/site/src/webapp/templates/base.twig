@@ -17,7 +17,7 @@
                 <a href="/"> Home</a></br />
                 <br>
                 {% if isLoggedIn %}
-                    Logged in as {{ loggedInUsername|raw }}.<br>
+                    Logged in as {{ loggedInUsername }}.<br>
                     {% if isAdmin %}
                         <a href="/admin">Admin section</a> <br>
                         <a href="/phpinfo">PHP Info</a> <br>
@@ -45,7 +45,7 @@
         </div> <!-- End: div container -->
 
         <div id="footer">
-            {% block footer %}here be footer{% endblock %}
+            {% block footer %}{% endblock %}
         </div>
     </body>
 </html>
