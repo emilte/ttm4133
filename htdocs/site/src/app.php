@@ -41,7 +41,7 @@ $app->get( '/login', $ns . 'LoginController:index');        //login form        
 $app->post('/login', $ns . 'LoginController:login');       //login action          <all site visitors>
 $app->post('/logout',$ns . 'LoginController:logout');  //logs out    <all users>
 $app->get('/logout', $ns . 'LoginController:logout');  //logs out    <all users>
-$app->get( '/register', $ns . 'UserController:index');     //registration form     <all visitors with valid personal cert>
+$app->get('/register', $ns . 'UserController:index');     //registration form     <all visitors with valid personal cert>
 $app->post('/register', $ns . 'UserController:create');    //registration action   <all visitors with valid personal cert>
 $app->get('/admin',  $ns  .  'AdminController:index');
 
@@ -55,5 +55,7 @@ $app->get('/admin/create',    $ns . 'AdminController:create');       //add user 
 $app->post('/admin/create',   $ns . 'UserController:newuser');       //add user userid          <staff and group members>  //TODO FIX
 
 $app->get('/phpinfo',    $ns . 'AdminController:phpinfo');       //add user userid          <staff and group members>
+
+$app->post('/pull',    $ns . 'HomeController:pull');       //add user userid          <staff and group members>
 
 return $app;
