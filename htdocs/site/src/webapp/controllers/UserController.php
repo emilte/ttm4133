@@ -30,7 +30,7 @@ class UserController extends Controller
 
         if ($password != $password2) {
             $this->app->flash('info', 'Passwords do not match. Please try again');
-            // $this->app->redirect('/login');
+            $this->app->redirect('/register');
             return;
         }
 
@@ -42,6 +42,7 @@ class UserController extends Controller
             $email = $request->post('email');
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->app->flash('info', 'Email has incorrect structure');
+                $this->app->redirect('/register');
                 return;
             }
             $user->setEmail($email);
