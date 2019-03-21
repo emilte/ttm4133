@@ -29,6 +29,23 @@ class UserController extends Controller
         $username = $request->post('username');
         $password = $request->post('password');
 
+        if (strlen($password) < 10){
+            $this->app->flash('info', 'Password is too short!');
+            $this->app->redirect('/register');
+            return;
+        }
+
+        if (!preg_match("#[0-9]+#", $password)){
+            $this->app->flash('info', 'Password must include at least one number!');
+            $this->app->redirect('/register');
+            return;
+        }
+
+        if (!preg_match("#[a-zA-Z]+#", $password)){
+            $this->app->flash('info', 'Password must include at least one letter!');
+            $this->app->redirect('/register');
+            return;
+        }
 
         $user = User::makeEmpty();
         $user->setUsername($username);
