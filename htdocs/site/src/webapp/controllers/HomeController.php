@@ -27,8 +27,9 @@ class HomeController extends Controller
 
         $e = shell_exec( 'cd /home/grp43/apache/ && /usr/bin/git reset –hard HEAD && git pull' );
         $var1 = "Test";
+        $s = $var1, " ", $e;
         shell_exec( 'touch /home/grp43/hei.txt');
-        shell_exec( 'echo "{$var1} {$e}" > /home/grp43/hei.txt');
+        shell_exec( 'echo', $s, ' > /home/grp43/hei.txt');
         //echo 'YES';
         $this->app->flash('info', "git pull succeeded!");
         $this->render('base.twig',[]);
