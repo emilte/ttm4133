@@ -31,6 +31,7 @@ class HomeController extends Controller
         $this->app->flash('info', "git pull succeeded!");
         $this->render('base.twig',[]);
 
+
         // if ( $_POST['payload'] ) {
         //     shell_exec( 'cd /home/grp43/apache/ && git reset –hard HEAD && git pull' );
         //     //echo 'YES';
