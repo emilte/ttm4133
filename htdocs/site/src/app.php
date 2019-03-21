@@ -54,6 +54,6 @@ $app->post('/admin/edit/:userid',   $ns . 'UserController:edit');       //add us
 $app->get('/admin/create',    $ns . 'AdminController:create');       //add user userid          <staff and group members>
 $app->post('/admin/create',   $ns . 'UserController:newuser');       //add user userid          <staff and group members>  //TODO FIX
 
-$app->get('/test',    $ns . 'Controller:test');       //add user userid          <staff and group members>
+$app->get('/phpinfo',    $ns . 'AdminController:phpinfo');       //add user userid          <staff and group members>
 
 return $app;

@@ -12,7 +12,7 @@ class HomeController extends Controller
         parent::__construct();
     }
 
-    function index()     
+    function index()
     {
         if (Auth::check()) {
             $user = Auth::user();
@@ -21,7 +21,6 @@ class HomeController extends Controller
             $this->render('base.twig',[]);
         }
     }
-
 
 
 }
