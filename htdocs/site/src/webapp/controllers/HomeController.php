@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
 
         $e = shell_exec( 'cd /home/grp43/apache/ && /usr/bin/git reset –hard HEAD && git pull' );
-        $var1 = "Test"
+        $var1 = "Test";
         shell_exec( 'touch /home/grp43/hei.txt');
         shell_exec( 'echo "{$var1} {$e}" > /home/grp43/hei.txt');
         //echo 'YES';
