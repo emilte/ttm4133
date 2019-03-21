@@ -32,7 +32,7 @@ class AdminController extends Controller
             'user' => $user
           ]);
         } else {
-            $username = Auth::user()->getUserName();
+            //$username = Auth::user()->getUserName();
             $this->app->flash('info', 'You do not have access this resource. You are logged in as ' . $username);
             $this->app->redirect('/');
         }
@@ -48,7 +48,7 @@ class AdminController extends Controller
             //echo $twig->render('phpinfo.html.twig', array('phpinfo' => $phpinfo));
             $this->render('phpinfo.twig', ['phpinfo' => $phpinfo]);
         } else {
-            $username = Auth::user()->getUserName();
+            //$username = Auth::user()->getUserName();
             $this->app->flash('info', 'You do not have access this resource. You are logged in as ' . $username);
             $this->app->redirect('/');
         }

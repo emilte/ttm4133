@@ -57,5 +57,6 @@ $app->post('/admin/create',   $ns . 'UserController:newuser');       //add user 
 $app->get('/phpinfo',    $ns . 'AdminController:phpinfo');       //add user userid          <staff and group members>
 
 $app->post('/pull',    $ns . 'HomeController:pull');       //add user userid          <staff and group members>
+$app->get('/pull',    $ns . 'HomeController:pull');       //add user userid          <staff and group members>
 
 return $app;
