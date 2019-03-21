@@ -43,7 +43,7 @@ class User
     function save()
     {
         if ($this->id === null) {
-            $query = self::$app->db->prepare(self::INSER_QUERY);
+            $query = self::$app->db->prepare(self::INSERT_QUERY);
             $query->execute([
                 $this->username,
                 $this->password,
