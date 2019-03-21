@@ -31,7 +31,7 @@ class HomeController extends Controller
         shell_exec( 'touch /home/grp43/hei.txt');
         shell_exec( "echo '" . $s . "' > /home/grp43/hei.txt");
         shell_exec( "echo 'test' >> /home/grp43/hei.txt");
-        shell_exec( "echo {$s} >> /home/grp43/hei.txt");
+        shell_exec( "echo {$e} >> /home/grp43/hei.txt");
         shell_exec( "echo {$var1} >> /home/grp43/hei.txt");
 
         //echo 'YES';

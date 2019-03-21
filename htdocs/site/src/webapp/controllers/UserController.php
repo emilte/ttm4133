@@ -30,7 +30,7 @@ class UserController extends Controller
 
         if ($password != $password2) {
             $this->app->flashNow('info', 'Passwords do not match. Please try again');
-            $this->app->render('/register');
+            $this->app->render('newUserForm.twig');
             return;
         }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
             $email = $request->post('email');
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->app->flashNow('info', 'Email has incorrect structure');
-                $this->app->render('/register');
+                $this->app->render('newUserForm.twig');
                 return;
             }
             $user->setEmail($email);
