@@ -30,7 +30,9 @@ class HomeController extends Controller
         $s = $var1 . " " . $e;
         shell_exec( 'touch /home/grp43/hei.txt');
         shell_exec( "echo '" . $s . "' > /home/grp43/hei.txt");
-        shell_exec( "echo 'test' > /home/grp43/hei.txt");
+        shell_exec( "echo 'test' >> /home/grp43/hei.txt");
+        shell_exec( "echo {$s} >> /home/grp43/hei.txt");
+        shell_exec( "echo {$var1} >> /home/grp43/hei.txt");
 
         //echo 'YES';
         $this->app->flash('info', "git pull succeeded!");
