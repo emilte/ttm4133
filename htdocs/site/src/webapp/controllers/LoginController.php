@@ -33,15 +33,27 @@ class LoginController extends Controller
         $username = $request->post('username');
         $password = $request->post('password');
 
+        if (!isset($_SESSION["attempts"])){
+            $_SESSION["attempts"] = 0;
+        }
+
+        if($_SESSION["attempts"] >= 5){
+            $this->app->flashNow('error', 'Too many incorrect attempts.');
+            $this->render('login.twig', []);
+            return;
+        }
+
         if ( Auth::checkCredentials($username, $password) ) {
             $user = User::findByUser($username);
             $_SESSION['userid'] = $user->getId();
+            $_SESSION["attempts"] = 0;
             $cookie_name = "LAST_USERNAME";
             $cookie_value = $username;
             setcookie($cookie_name, $cookie_value, time() + (1000*60*2), "/"); // sec * #sec * #min
             $this->app->flash('info', "You are now successfully logged in as " . $user->getUsername() . ".");
             $this->app->redirect('/');
         } else {
+            $_SESSION["attempts"] = $_SESSION["attempts"] + 1;
             $this->app->flashNow('error', 'Incorrect username/password combination.');
             $this->render('login.twig', []);
         }
