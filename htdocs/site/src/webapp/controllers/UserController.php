@@ -58,7 +58,7 @@ class UserController extends Controller
 
         if ($error != "") {
             $this->app->flashNow('info', $error);
-            $this->app->render('newUserForm.twig', ["username"=>$username, "email"=>$email, "bio"=>$bio]);
+            $this->app->render('newUserForm.twig', ["username"=>$username, "password"=>$password, "email"=>$email, "bio"=>$bio]);
             return;
         }
 
