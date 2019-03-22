@@ -1,7 +1,7 @@
 <?php
 
 for ($i = 1; $i <= 44; $i++) {
-    $s = "".$i;
+    $s = $i;
     if ($i < 10) {
         $s = "0".$i;
     }
@@ -26,6 +26,7 @@ for ($i = 1; $i <= 44; $i++) {
         echo "=============================== Error for grp".$s;
     }
 
+    echo "========== Result for grp" . $s; 
     var_dump($result);
 }
 
