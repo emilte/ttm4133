@@ -25,11 +25,14 @@ class Sql
 
     static function insertDummyUsers() {
 
-	    $adminHash = password_hash('HesteskoEplepai43', PASSWORD_BCRYPT);
+        $adminHash = password_hash('HesteskoEplepai43', PASSWORD_BCRYPT);
+	    $emiltepw = password_hash('Django123', PASSWORD_BCRYPT);
 
         $q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', '$adminHash', 1)";
+        $q2 = "INSERT INTO users(username, password, isadmin) VALUES ('emilte', '$emiltepw', 1)";
 
         self::$pdo->exec($q1);
+        self::$pdo->exec($q2);
 
         print "[ttm4135] Done inserting dummy users.".PHP_EOL;
     }
