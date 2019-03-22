@@ -28,9 +28,35 @@ class UserController extends Controller
         $password = $request->post('password');
         $password2 = $request->post('password2');
 
+        $email = "";
+        $error = "";
+
+        # Custom check password
         if ($password != $password2) {
-            $this->app->flashNow('info', 'Passwords do not match. Please try again');
-            $this->app->render('newUserForm.twig');
+            $error = "Passwords do not match. Please try again";
+        }
+        elseif (strlen($password) <= 8) {
+            $error = "Your Password Must Contain At Least 8 Characters!";
+        }
+        elseif(!preg_match("#[0-9]+#",$password)) {
+            $error = "Your Password Must Contain At Least 1 Number!";
+        }
+        elseif(!preg_match("#[A-Z]+#",$password)) {
+            $error = "Your Password Must Contain At Least 1 Capital Letter!";
+        }
+        elseif(!preg_match("#[a-z]+#",$password)) {
+            $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
+        }
+        elseif ($request->post('email')) {
+            $email = $request->post('email');
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = "Email has incorrect structure";
+            }
+        }
+
+        if ($error != "") {
+            $this->app->flashNow('info', $error);
+            $this->app->render('newUserForm.twig', ["username"=>$username, "email"=>$email]);
             return;
         }
 
@@ -38,17 +64,9 @@ class UserController extends Controller
         $user->setUsername($username);
         $user->setPassword($password);
 
-        if($request->post('email')) {
-            $email = $request->post('email');
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $this->app->flashNow('info', 'Email has incorrect structure');
-                $this->app->render('newUserForm.twig');
-                return;
-            }
-            $user->setEmail($email);
-        }
+        $user->setEmail($email);
 
-        if($request->post('bio')) {
+        if ($request->post('bio')) {
             $bio = htmlspecialchars( $request->post('bio') );
             $user->setBio($bio);
         }
