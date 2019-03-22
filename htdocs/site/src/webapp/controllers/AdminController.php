@@ -12,7 +12,7 @@ class AdminController extends Controller
         parent::__construct();
     }
 
-    function index()     
+    function index()
     {
         if (Auth::isAdmin()) {
             $users = User::all();
@@ -31,6 +31,21 @@ class AdminController extends Controller
           $this->render('showuser.twig', [
             'user' => $user
           ]);
+      } else {
+            $username = Auth::user()->getUserName();
+            $this->app->flash('info', 'You do not have access this resource. You are logged in as ' . $username);
+            $this->app->redirect('/');
+        }
+    }
+
+    function phpinfo()
+    {
+        if (Auth::isAdmin()) {
+            ob_start();
+            phpinfo();
+            $phpinfo = ob_get_clean();
+
+            $this->render('phpinfo.twig', ['phpinfo' => $phpinfo]);
         } else {
             $username = Auth::user()->getUserName();
             $this->app->flash('info', 'You do not have access this resource. You are logged in as ' . $username);

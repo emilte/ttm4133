@@ -19,8 +19,9 @@ class User
     static $app;
 
 
-    static function make($id, $username, $password, $email, $bio, $isAdmin )
-    {
+    static function make($id, $username, $password, $email, $bio, $isAdmin ) {
+        // $password = password_hash($password, PASSWORD_DEFAULT); // Possibly incorrect (hashed for the second time)
+        $password = $password; // Possibly incorrect (hashed for the second time)
         $user = new User();
         $user->id = $id;
         $user->username = $username;
@@ -111,7 +112,7 @@ class User
 
     function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     function setEmail($email)
