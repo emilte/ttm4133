@@ -1,6 +1,6 @@
 <?php
 
-for ($i = 1; $i <= 44; $i++) {
+for ($i = 10; $i <= 70; $i++) {
     $s = $i;
     if ($i < 10) {
         $s = "0".$i;
@@ -23,11 +23,18 @@ for ($i = 1; $i <= 44; $i++) {
     $result = file_get_contents($url, false, $context);
 
     if ($result === FALSE) {
-        echo "=============================== Error for grp".$s;
+        //echo "=============================== Error for grp".$s;
     }
 
-    echo "========== Result for grp" . $s; 
-    var_dump($result);
+    if (strpos( $result, "Incorrect" ) !== false) {
+        echo "\nPeople in grp".$s." are hella smart";
+    }
+    else {
+        echo "\nGrp".$s." has default admin";
+    }
+
+    // echo "========== Result for grp" . $s;
+    // var_dump($result);
 }
 
 ?>
