@@ -40,7 +40,7 @@ class LoginController extends Controller
         if($_SESSION["attempts"] >= 5){
             $this->app->flashNow('error', 'Too many incorrect attempts.');
             $this->render('login.twig', []);
-            return
+            return;
         }
 
         if ( Auth::checkCredentials($username, $password) ) {
