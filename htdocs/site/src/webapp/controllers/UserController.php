@@ -43,7 +43,7 @@ class UserController extends Controller
             }
         }
 
-        if(preg_match('#()[]{}^~\$/#', $username)) {
+        if(preg_match(preg_quote('#()[]{}^~$#', '/'), $username)) {
             $error = "Your username contains illegal characters!";
         }
 
@@ -63,7 +63,7 @@ class UserController extends Controller
         elseif(!preg_match("#[a-z]+#",$password)) {
             $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
         }
-        elseif(preg_match('#()[]{}^~\$/#', $password)) {
+        elseif(preg_match(preg_quote('#()[]{}^~$#', '/'), $password)) {
             $error = "Your password contains illegal characters!";
         }
 
