@@ -32,6 +32,11 @@ class UserController extends Controller
         $bio = "";
         $error = "";
 
+        // Simple script check:
+        if ($request->post('captcha') == null) {
+            $error = "You must check the box to create a user";
+        }
+
         // Check if user already exists:
         $existingUser = User::findByUser($username);
         if ($existingUser != null) {
@@ -43,9 +48,11 @@ class UserController extends Controller
             }
         }
 
-        $pattern = preg_quote('#$%^&*()+=-[]\';,./{}|\":<>?~', '#');
 
-        if(preg_match("#[{$pattern}]#", $username)) {
+
+        // Check special characters in username
+        $pattern = preg_quote('#$%^&*()+=-[]\';,./{}|\":<>?~', '#');
+        if (preg_match("#[{$pattern}]#", $username) ) {
             $error = "Your username contains illegal characters!";
         }
 
