@@ -143,17 +143,55 @@ class UserController extends Controller
 
             $username = $request->post('username');
             $password = $request->post('password');
+            $password2 = $request->post('password2');
             $email = $request->post('email');
             $bio = $request->post('bio');
 
             $isAdmin = ($request->post('isAdmin') != null);
 
+            $error = "";
+
+            # Custom check password
+            if ($password != $password2) {
+                $error = "Passwords do not match. Please try again";
+            }
+            elseif (strlen($password) <= 8) {
+                $error = "Your Password Must Contain At Least 8 Characters!";
+            }
+            elseif(!preg_match("#[0-9]+#",$password)) {
+                $error = "Your Password Must Contain At Least 1 Number!";
+            }
+            elseif(!preg_match("#[A-Z]+#",$password)) {
+                $error = "Your Password Must Contain At Least 1 Capital Letter!";
+            }
+            elseif(!preg_match("#[a-z]+#",$password)) {
+                $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
+            }
+
+
+            if ($request->post('email')) {
+                $email = $request->post('email');
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $error = "Email has incorrect structure";
+                }
+            }
+            if ($request->post('bio')) {
+                $bio = htmlspecialchars( $request->post('bio') );
+            }
+
+            if ($error != "") {
+                $this->app->flashNow('info', $error);
+                $this->app->render('newUserForm.twig', ["username"=>$username, "password"=>$password, "email"=>$email, "bio"=>$bio]);
+                return;
+            }
+
 
             $user->setUsername($username);
-            $user->setPassword($password);
             $user->setBio($bio);
             $user->setEmail($email);
             $user->setIsAdmin($isAdmin);
+            $user->setPassword($password);
+
 
             $user->save();
             $this->app->flashNow('info', 'Your profile was successfully saved.');
@@ -177,22 +215,46 @@ class UserController extends Controller
             throw new \Exception("Unable to fetch logged in user's object from db.");
         } elseif (Auth::userAccess($tuserid)) {
 
-
             $request = $this->app->request;
 
             $username = $request->post('username');
             $password = $request->post('password');
+            $password = $request->post('password2');
             $email = $request->post('email');
             $bio = $request->post('bio');
 
             $isAdmin = ($request->post('isAdmin') != null);
 
+            $error = "";
+
+            # Custom check password if edited
+            if ($password != "") {
+                if ($password != $password2) {
+                    $error = "Passwords do not match. Please try again";
+                }
+                elseif (strlen($password) <= 8) {
+                    $error = "Your Password Must Contain At Least 8 Characters!";
+                }
+                elseif(!preg_match("#[0-9]+#",$password)) {
+                    $error = "Your Password Must Contain At Least 1 Number!";
+                }
+                elseif(!preg_match("#[A-Z]+#",$password)) {
+                    $error = "Your Password Must Contain At Least 1 Capital Letter!";
+                }
+                elseif(!preg_match("#[a-z]+#",$password)) {
+                    $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
+                }
+            }
+
 
             $user->setUsername($username);
-            $user->setPassword($password);
             $user->setBio($bio);
             $user->setEmail($email);
             $user->setIsAdmin($isAdmin);
+
+            if ($password != "") { // Set password if edited
+                $user->setPassword($password);
+            }
 
             $user->save();
             $this->app->flashNow('info', 'Your profile was successfully saved.');
