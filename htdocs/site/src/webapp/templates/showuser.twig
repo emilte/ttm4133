@@ -10,11 +10,11 @@
         <label>Username: </label>
         <input type="text" name="username" value="{{user.username}}"> <br />
 
-        <label>Password (leave empty to keep previous password): </label>
-        <input type="password" name="password" value=""> <br />
-
         <label>Hashed password: </label>
         <input disabled type="text" name="hash" value="{{ user.password }}"> <br>
+
+        <label>Password (empty = no change): </label>
+        <input type="password" name="password" value=""> <br />
 
         <label>Repeat password: </label>
         <input type="password" name="password2" value=""> <br />
