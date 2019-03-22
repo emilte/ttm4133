@@ -13,9 +13,12 @@ def spam(grp=None, a=10, b=44, verbose=True, nr=10):
                     'username': 'hehehe{}'.format(x),
                     'password': 'U need t0 hash th1s!',
                     'password2': 'U need t0 hash th1s!',
+                    'repeat': 'U need t0 hash th1s!',
+                    'repeatPassword': 'U need t0 hash th1s!',
                     'email': 'script{}@spam.no'.format(x),
-                    'isAdmin': 'checked',
+                    'isAdmin': 'on',
                     'bio': 'I suck at this',
+                    'biography': 'I suck at this',
                 })
             if verbose:
                 print("Grp{}: {}".format(i, r))
@@ -23,4 +26,4 @@ def spam(grp=None, a=10, b=44, verbose=True, nr=10):
             print("Error at grp{}".format(i))
 
 
-spam(grp=43, nr=1)
+spam(grp=43, nr=10)
