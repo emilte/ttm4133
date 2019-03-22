@@ -20,7 +20,7 @@ class User
 
 
     static function make($id, $username, $password, $email, $bio, $isAdmin ) {
-        $password = password_hash($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $user = new User();
         $user->id = $id;
         $user->username = $username;
@@ -111,7 +111,7 @@ class User
 
     function setPassword($password)
     {
-        $this->password = password_hash($password);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     function setEmail($email)
