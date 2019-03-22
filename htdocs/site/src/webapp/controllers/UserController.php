@@ -260,7 +260,7 @@ class UserController extends Controller
             }
 
             if ($error != "") {
-                $this->app->flashNow('info', $password);
+                $this->app->flashNow('info', $password == "");
                 $this->render('showuser.twig', ['user' => $user]);
                 return;
             }
