@@ -25,16 +25,11 @@ class Sql
 
     static function insertDummyUsers() {
 
-	//$adminHash = password_hash('admin', PASSWORD_BCRYPT);
-        //$bobHash = password_hash('bob', PASSWORD_BCRYPT);
+	    $adminHash = password_hash('admin', PASSWORD_BCRYPT);
+        $bobHash = password_hash('bob', PASSWORD_BCRYPT);
 
-        //print $adminHash;
-        //print $bobHash;
-
-        //$q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', $adminHash, 1)";
-        //$q2 = "INSERT INTO users(username, password) VALUES ('bob', $bobHash)";
-        $q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', 'admin', 1)";
-        $q2 = "INSERT INTO users(username, password) VALUES ('bob', 'bob')";
+        $q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', $adminHash, 1)";
+        $q2 = "INSERT INTO users(username, password) VALUES ('bob', $bobHash)";
 
         self::$pdo->exec($q1);
         self::$pdo->exec($q2);
