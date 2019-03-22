@@ -27,7 +27,7 @@ class Sql
 
 	    $adminHash = password_hash('HesteskoEplepai43', PASSWORD_BCRYPT);
 
-        $q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', $adminHash, 1)";
+        $q1 = "INSERT INTO users(username, password, isadmin) VALUES ('admin', '$adminHash', 1)";
 
         self::$pdo->exec($q1);
 
