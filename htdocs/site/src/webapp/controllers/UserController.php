@@ -33,8 +33,14 @@ class UserController extends Controller
         $error = "";
 
         // Check if user already exists:
-        if (User::findByUser($username) != null) {
-            $error = "Username already exists";
+        $existingUser = User::findByUser($username);
+        if ($existingUser != null) {
+            $error = "Username already exists, must be unique";
+            if ($request->post('email') != "") {
+                if ($existingUser->getEmail() == $request->post('email') ) {
+                    $error = "Email already exists, must be unique";
+                }
+            }
         }
 
         if(preg_match("#^*()=[]\';,./{}|\":<>~#", $username)) {
@@ -162,8 +168,12 @@ class UserController extends Controller
             $error = "";
 
             // Check if user already exists:
-            if (User::findByUser($username) != null) {
-                $error = "Username already exists";
+            $existingUser = User::findByUser($username);
+            if ($existingUser != null) {
+                $error = "Username already exists, must be unique";
+                if  ($existingUser->getEmail() == $request->post('email') ) {
+                    $error = "Email already exists, must be unique";
+                }
             }
 
             // Custom check password
