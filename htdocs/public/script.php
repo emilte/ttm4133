@@ -27,10 +27,10 @@ for ($i = 10; $i <= 70; $i++) {
     }
 
     if (strpos( $result, "Incorrect" ) !== false) {
-        echo "\nGrp".$s." has default admin";
+        echo "\nPeople in grp".$s." are hella smart";
     }
     else {
-        echo "\nnoooooo ".$s;
+        echo "\nGrp".$s." has default admin";
     }
 
     // echo "========== Result for grp" . $s;
