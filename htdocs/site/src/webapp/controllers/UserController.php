@@ -151,7 +151,7 @@ class UserController extends Controller
 
             $error = "";
 
-            # Custom check password
+            // Custom check password
             if ($password != $password2) {
                 $error = "Passwords do not match. Please try again";
             }
@@ -227,7 +227,7 @@ class UserController extends Controller
 
             $error = "";
 
-            # Custom check password if edited
+            // Custom check password if edited
             if ($password != "") {
                 if ($password != $password2) {
                     $error = "Passwords do not match. Please try again";
@@ -244,9 +244,10 @@ class UserController extends Controller
                 elseif(!preg_match("#[a-z]+#",$password)) {
                     $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
                 }
-            }
-            else {
-                 $error = "damn";
+                else {
+                    $error = "Success";
+                    $user->setPassword($password);
+                }
             }
 
             if ($request->post('email')) {
@@ -270,10 +271,6 @@ class UserController extends Controller
             $user->setBio($bio);
             $user->setEmail($email);
             $user->setIsAdmin($isAdmin);
-
-            if ($password != "") { // Set password if edited
-                $user->setPassword($password);
-            }
 
             $user->save();
             $this->app->flashNow('info', 'Your profile was successfully saved.');
