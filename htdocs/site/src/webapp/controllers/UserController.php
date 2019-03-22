@@ -246,6 +246,22 @@ class UserController extends Controller
                 }
             }
 
+            if ($request->post('email')) {
+                $email = $request->post('email');
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $error = "Email has incorrect structure";
+                }
+            }
+            if ($request->post('bio')) {
+                $bio = htmlspecialchars( $request->post('bio') );
+            }
+
+            if ($error != "") {
+                $this->app->flashNow('info', $error);
+                $this->app->render('newUserForm.twig', ["username"=>$username, "password"=>$password, "email"=>$email, "bio"=>$bio]);
+                return;
+            }
+
 
             $user->setUsername($username);
             $user->setBio($bio);
