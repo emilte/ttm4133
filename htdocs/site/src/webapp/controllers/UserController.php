@@ -32,7 +32,12 @@ class UserController extends Controller
         $bio = "";
         $error = "";
 
-        # Custom check password
+        // Check if user already exists:
+        if (User::findByUser($username) != null) {
+            $error = "Username already exists";
+        }
+
+        # Custom check password:
         if ($password != $password2) {
             $error = "Passwords do not match. Please try again";
         }
@@ -137,8 +142,6 @@ class UserController extends Controller
         $user = User::makeEmpty();
 
         if (Auth::isAdmin()) {
-
-
             $request = $this->app->request;
 
             $username = $request->post('username');
@@ -150,6 +153,11 @@ class UserController extends Controller
             $isAdmin = ($request->post('isAdmin') != null);
 
             $error = "";
+
+            // Check if user already exists:
+            if (User::findByUser($username) != null) {
+                $error = "Username already exists";
+            }
 
             // Custom check password
             if ($password != $password2) {
