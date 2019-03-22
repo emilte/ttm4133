@@ -219,7 +219,7 @@ class UserController extends Controller
 
             $username = $request->post('username');
             $password = $request->post('password');
-            $password = $request->post('password2');
+            $password2 = $request->post('password2');
             $email = $request->post('email');
             $bio = $request->post('bio');
 
@@ -260,8 +260,8 @@ class UserController extends Controller
             }
 
             if ($error != "") {
-                $this->app->flashNow('info', $error);
-                $this->app->render('newUserForm.twig', ["username"=>$username, "password"=>$password, "email"=>$email, "bio"=>$bio]);
+                $this->app->flashNow('info', $password);
+                $this->render('showuser.twig', ['user' => $user]);
                 return;
             }
 
