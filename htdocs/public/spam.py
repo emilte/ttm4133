@@ -26,4 +26,4 @@ def spam(grp=None, a=10, b=44, verbose=True, nr=10):
             print("Error at grp{}".format(i))
 
 
-spam(grp=43, nr=10)
+spam(grp=43, nr=1)
