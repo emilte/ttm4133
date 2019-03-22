@@ -245,6 +245,9 @@ class UserController extends Controller
                     $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
                 }
             }
+            else {
+                 $error = "damn";
+            }
 
             if ($request->post('email')) {
                 $email = $request->post('email');
