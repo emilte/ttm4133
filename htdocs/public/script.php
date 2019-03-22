@@ -19,18 +19,27 @@ for ($i = 10; $i <= 50; $i++) {
         )
     );
 
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
 
-    if ($result === FALSE) {
-        //echo "=============================== Error for grp".$s;
-    }
+    try {
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
 
-    if (strpos( $result, "Incorrect" ) !== false) {
-        echo "\nPeople in grp".$s." are hella smart";
+        if ($result === FALSE) {
+            //echo "=============================== Error for grp".$s;
+        }
+
+        if (strpos( $result, "Incorrect" ) !== false) {
+            echo "\nPeople in grp".$s." are hella smart";
+        }
+        else {
+            echo "\nGrp".$s." has default admin";
+        }
     }
-    else {
-        echo "\nGrp".$s." has default admin";
+    catch (Exception $e) {
+        echo "\nError at grp".$s;
+    }
+    finally {
+        echo "\n";
     }
 
     // echo "========== Result for grp" . $s;
