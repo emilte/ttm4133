@@ -55,6 +55,9 @@ class UserController extends Controller
                 $error = "Email has incorrect structure";
             }
         }
+        if ($request->post('bio')) {
+            $bio = htmlspecialchars( $request->post('bio') );
+        }
 
         if ($error != "") {
             $this->app->flashNow('info', $error);
@@ -65,14 +68,8 @@ class UserController extends Controller
         $user = User::makeEmpty();
         $user->setUsername($username);
         $user->setPassword($password);
-
         $user->setEmail($email);
-
-        if ($request->post('bio')) {
-            $bio = htmlspecialchars( $request->post('bio') );
-            $user->setBio($bio);
-        }
-
+        $user->setBio($bio);
         $user->save();
         $this->app->flash('info', 'Thanks for creating a user. You may now log in.');
         $this->app->redirect('/login');
