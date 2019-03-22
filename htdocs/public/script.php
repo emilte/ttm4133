@@ -22,11 +22,12 @@ for ($i = 1; $i <= 44; $i++) {
     $context = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
 
-    if ($result === FALSE) { /* Handle error */ }
+    if ($result === FALSE) {
+        echo "Error for grp".$s;
+    }
 
     if ($i == "19" || $i == "43") {
         var_dump($result);
-        echo $result;
     }
 }
 
