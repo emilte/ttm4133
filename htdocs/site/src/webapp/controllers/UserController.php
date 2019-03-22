@@ -29,6 +29,7 @@ class UserController extends Controller
         $password2 = $request->post('password2');
 
         $email = "";
+        $bio = "";
         $error = "";
 
         # Custom check password
@@ -47,7 +48,8 @@ class UserController extends Controller
         elseif(!preg_match("#[a-z]+#",$password)) {
             $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
         }
-        elseif ($request->post('email')) {
+
+        if ($request->post('email')) {
             $email = $request->post('email');
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error = "Email has incorrect structure";
@@ -56,7 +58,7 @@ class UserController extends Controller
 
         if ($error != "") {
             $this->app->flashNow('info', $error);
-            $this->app->render('newUserForm.twig', ["username"=>$username, "email"=>$email]);
+            $this->app->render('newUserForm.twig', ["username"=>$username, "email"=>$email, "bio"=>$bio]);
             return;
         }
 
