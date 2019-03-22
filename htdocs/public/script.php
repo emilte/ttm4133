@@ -23,12 +23,10 @@ for ($i = 1; $i <= 44; $i++) {
     $result = file_get_contents($url, false, $context);
 
     if ($result === FALSE) {
-        echo "Error for grp".$s;
+        echo "=============================== Error for grp".$s;
     }
 
-    if ($i == "19" || $i == "43") {
-        var_dump($result);
-    }
+    var_dump($result);
 }
 
 ?>
