@@ -37,6 +37,10 @@ class UserController extends Controller
             $error = "Username already exists";
         }
 
+        if(preg_match('^*()=[]\';,./{}|\":<>~', $username) {
+            $error = "Your username contains illegal characters!";
+        }
+
         # Custom check password:
         if ($password != $password2) {
             $error = "Passwords do not match. Please try again";
@@ -52,6 +56,9 @@ class UserController extends Controller
         }
         elseif(!preg_match("#[a-z]+#",$password)) {
             $error = "Your Password Must Contain At Least 1 Lowercase Letter!";
+        }
+        elseif(preg_match('^*()=[]\';,./{}|\":<>~', $password) {
+            $error = "Your password contains illegal characters!";
         }
 
         if ($request->post('email')) {
