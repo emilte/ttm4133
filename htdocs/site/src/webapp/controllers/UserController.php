@@ -61,7 +61,6 @@ class UserController extends Controller
         $verify = file_get_contents($url, false, $context);
         shell_exec("echo $verify >> /home/grp43/apache/logs/custom.txt");
         $captcha_success = json_decode($verify);
-        shell_exec("echo $captcha_success >> /home/grp43/apache/logs/custom.txt");
         if ($captcha_success->success == false) {
             $error = "You must complete the reCaptcha to create a user";
         }
