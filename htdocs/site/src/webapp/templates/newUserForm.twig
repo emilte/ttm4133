@@ -1,5 +1,9 @@
 {% extends 'base.twig' %}
 
+{% block head %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
 {% block content %}
 
     <h2>Register new user</h2>
@@ -25,6 +29,11 @@
 
         <label>I am not a robot: </label>
         <input type="checkbox" name="captcha"> <br />
+
+        <div class="captcha-wrapper">
+            <div class="g-recaptcha" data-sitekey="6LdfnpkUAAAAAJLy-8C81Y6mwBnbuY9FXp4B1X-W"></div>
+        </div>
+        <br>
 
         <input type="submit" name="submit" value="Submit">
     </form>

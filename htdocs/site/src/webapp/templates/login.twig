@@ -1,8 +1,6 @@
 {% extends 'base.twig' %}
 
-{% block head %}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{% endblock %}
+
 
 {% block content %}
 
@@ -17,9 +15,6 @@
 
         <label>Password: </label>
         <input required type="password" name="password">
-        <br>
-
-        <div class="g-recaptcha" data-sitekey="6LdfnpkUAAAAAJLy-8C81Y6mwBnbuY9FXp4B1X-W"></div>
         <br>
 
         <input type="submit" name="submit" value="Log in">
