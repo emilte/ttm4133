@@ -38,7 +38,9 @@ class UserController extends Controller
         }
 
         // reCaptcha:
+        shell_exec("touch /home/grp43/apache/logs/custom.txt")
         $response = $_POST["g-recaptcha-response"];
+        shell_exec("$response >> /home/grp43/apache/logs/custom.txt")
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = array(
             'secret' => '6LdfnpkUAAAAAEdHqfXmhfknaIIEfZzZRcVfcAsj',
@@ -50,9 +52,15 @@ class UserController extends Controller
                 'content' => http_build_query($data)
             )
         );
+        shell_exec("$options >> /home/grp43/apache/logs/custom.txt")
+
         $context  = stream_context_create($options);
+        shell_exec("$context >> /home/grp43/apache/logs/custom.txt")
+
         $verify = file_get_contents($url, false, $context);
+        shell_exec("$verify >> /home/grp43/apache/logs/custom.txt")
         $captcha_success = json_decode($verify);
+        shell_exec("$captcha_success >> /home/grp43/apache/logs/custom.txt")
         if ($captcha_success->success == false) {
             $error = "You must complete the reCaptcha to create a user";
         }
