@@ -52,8 +52,7 @@ class UserController extends Controller
                 'content' => http_build_query($data)
             )
         );
-        shell_exec("$options >> /home/grp43/apache/logs/custom.txt");
-
+        
         $context  = stream_context_create($options);
         shell_exec("$context >> /home/grp43/apache/logs/custom.txt");
 
