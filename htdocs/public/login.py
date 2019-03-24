@@ -32,7 +32,5 @@ def login(username="admin", password="admin", grp=None, a=10, b=44, verbose=True
             print("Error at grp{}".format(i))
 
 
-for i in range(20):
-    print(i)
-    login(grp=19)
-    logout(grp=19)
+
+login()
