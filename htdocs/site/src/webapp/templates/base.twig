@@ -9,6 +9,10 @@
         <title>{{ title|default(titleVar) }}</title>
         <script>
         </script>
+
+        {% block head %}
+
+        {% endblock %}
     </head>
 
     <body>
@@ -47,5 +51,9 @@
         <div id="footer">
             {% block footer %}{% endblock %}
         </div>
+
+        {% block script %}
+
+        {% endblock %}
     </body>
 </html>
