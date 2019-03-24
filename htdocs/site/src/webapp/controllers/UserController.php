@@ -32,9 +32,29 @@ class UserController extends Controller
         $bio = "";
         $error = "";
 
-        // Simple script check:
+        // Simple bot check:
         if ($request->post('captcha') == null) {
             $error = "You must check the box to create a user";
+        }
+
+        // reCaptcha:
+        $response = $_POST["g-recaptcha-response"];
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6LdfnpkUAAAAAEdHqfXmhfknaIIEfZzZRcVfcAsj',
+            'response' => $_POST["g-recaptcha-response"]
+        );
+        $options = array(
+            'http' => array (
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success = json_decode($verify);
+        if ($captcha_success->success == false) {
+            $error = "You must complete the reCaptcha to create a user";
         }
 
         // Check if user already exists:
@@ -47,8 +67,6 @@ class UserController extends Controller
                 }
             }
         }
-
-
 
         // Check special characters in username
         $pattern = preg_quote('#$%^&*()+=-[]\';,./{}|\":<>?~', '#');
