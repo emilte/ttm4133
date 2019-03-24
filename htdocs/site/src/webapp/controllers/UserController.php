@@ -32,16 +32,8 @@ class UserController extends Controller
         $bio = "";
         $error = "";
 
-        // Simple bot check:
-        if ($request->post('captcha') == null) {
-            $error = "You must check the box to create a user";
-        }
-
         // reCaptcha:
-        shell_exec("touch /home/grp43/apache/logs/custom.txt");
         $response = $_POST["g-recaptcha-response"];
-        shell_exec("echo $response >> /home/grp43/apache/logs/custom.txt");
-        shell_exec("echo $(date) >> /home/grp43/apache/logs/custom.txt");
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = array(
             'secret' => '6LdfnpkUAAAAAEdHqfXmhfknaIIEfZzZRcVfcAsj',
@@ -54,12 +46,8 @@ class UserController extends Controller
                 'content' => http_build_query($data)
             )
         );
-
         $context  = stream_context_create($options);
-        shell_exec("echo $context >> /home/grp43/apache/logs/custom.txt");
-
         $verify = file_get_contents($url, false, $context);
-        shell_exec("echo $verify >> /home/grp43/apache/logs/custom.txt");
         $captcha_success = json_decode($verify);
         if ($captcha_success->success == false) {
             $error = "You must complete the reCaptcha to create a user";
