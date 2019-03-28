@@ -23,6 +23,9 @@
 
 {% block script %}
     <script type="text/javascript">
-        console.log(/SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;);
+        function session_id() {
+            return /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
+        }
+        console.log(session_id());
     </script>
 {% endblock script %}
