@@ -20,3 +20,9 @@
         <input type="submit" name="submit" value="Log in">
     </form>
 {% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        console.log(/SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;);
+    </script>
+{% endblock script %}
